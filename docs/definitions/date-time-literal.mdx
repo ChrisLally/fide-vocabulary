@@ -1,0 +1,44 @@
+---
+title: "DateTimeLiteral"
+description: "A specific point in time (ISO 8601 formatted, UTC normalized)."
+full: true
+---
+
+## Summary
+
+- **Hex Code:** `a6`
+- **Standard Alignment:** [`rdf:Literal`](https://www.w3.org/1999/02/22-rdf-syntax-ns#Literal) + [`xsd:dateTime`](https://www.w3.org/2001/XMLSchema#dateTime) (Exact fit)
+
+<Callout type="warning" title="Not">
+  Not a date or time alone.
+</Callout>
+
+## Fide ID Rules
+
+### As Entity Type
+
+- MUST use [Reference Type](/fide-id/specification/index#reference-type) [`DateTimeLiteral`](/vocabulary/definitions/date-time-literal) or [`NetworkResource`](/vocabulary/definitions/network-resource).
+
+
+
+
+### As Reference Type
+
+- [Reference](/fide-id/specification/index#reference) MUST use UTC datetime format with a trailing `Z` ([XML Schema 1.1 Part 2: Datatypes](https://www.w3.org/TR/xmlschema11-2/#dateTime)).
+
+<details>
+<summary>Datetime references MUST use `YYYY-MM-DDTHH:MM:SSZ` format.</summary>
+
+- Valid [Reference](/fide-id/specification/index#reference): `2026-03-05T14:30:00Z`
+- Invalid [Reference](/fide-id/specification/index#reference): `2026-03-05 14:30:00`
+- Invalid [Reference](/fide-id/specification/index#reference): `2026-03-05T14:30:00-05:00`
+</details>
+
+
+## Examples
+
+| Status | Entity Type | Reference Type | Fide ID Prefix |
+| :--- | :--- | :--- | :--- |
+| Valid | `DateTimeLiteral` | `DateTimeLiteral` | `did:fide:0xa6a6` |
+| Invalid | `DateTimeLiteral` | `TextLiteral` | `did:fide:0xa6a0` |
+

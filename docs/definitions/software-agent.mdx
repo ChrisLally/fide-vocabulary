@@ -1,0 +1,32 @@
+---
+title: "SoftwareAgent"
+description: "A running process that acts as an independent actor: bot, AI agent, smart contract. Can hold keys and sign."
+full: true
+---
+
+## Summary
+
+- **Hex Code:** `12`
+- **Standard Alignment:** [`schema:SoftwareApplication`](https://schema.org/SoftwareApplication) + [`prov:SoftwareAgent`](https://www.w3.org/ns/prov#SoftwareAgent) (Close fit)
+
+<Callout type="warning" title="Not">
+  Not a person or organization. Not static passive code (use CreativeWork for repos, images, logic).
+</Callout>
+
+## Fide ID Rules
+
+### As Entity Type
+
+- MUST use [Reference Type](/fide-id/specification/index#reference-type) [`NetworkResource`](/vocabulary/definitions/network-resource).
+
+
+
+
+
+## Examples
+
+| Status | Entity Type | Reference Type | Fide ID Prefix |
+| :--- | :--- | :--- | :--- |
+| Valid | `SoftwareAgent` | `NetworkResource` | `did:fide:0x1220` |
+| Invalid | `SoftwareAgent` | `Statement` | `did:fide:0x1200` |
+

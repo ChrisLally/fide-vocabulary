@@ -1,0 +1,32 @@
+---
+title: "Place"
+description: "A spatial context that can contain presence, co-location, and interaction. Includes physical locations and persistent virtual environments (e.g., a concert venue, a Discord server or channel, a Zoom room, a VRChat instance). Physicality/virtuality is asserted via Statements, not the base type."
+full: true
+---
+
+## Summary
+
+- **Hex Code:** `40`
+- **Standard Alignment:** [`schema:Place`](https://schema.org/Place) + [`schema:VirtualLocation`](https://schema.org/VirtualLocation) (Broad fit)
+
+<Callout type="warning" title="Not">
+  Not a happening or a physical artifact. Can an Actor have presence there? Is its identity a spatial address rather than a document location or account?
+</Callout>
+
+## Fide ID Rules
+
+### As Entity Type
+
+- MUST use [Reference Type](/fide-id/specification/index#reference-type) [`NetworkResource`](/vocabulary/definitions/network-resource).
+
+
+
+
+
+## Examples
+
+| Status | Entity Type | Reference Type | Fide ID Prefix |
+| :--- | :--- | :--- | :--- |
+| Valid | `Place` | `NetworkResource` | `did:fide:0x4020` |
+| Invalid | `Place` | `Statement` | `did:fide:0x4000` |
+

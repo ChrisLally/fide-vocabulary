@@ -1,0 +1,45 @@
+---
+title: "DurationLiteral"
+description: "A calculated amount of elapsed time (ISO 8601 duration format)."
+full: true
+---
+
+## Summary
+
+- **Hex Code:** `a7`
+- **Standard Alignment:** [`rdf:Literal`](https://www.w3.org/1999/02/22-rdf-syntax-ns#Literal) + [`xsd:duration`](https://www.w3.org/2001/XMLSchema#duration) (Exact fit)
+
+<Callout type="warning" title="Not">
+  Not a datetime.
+</Callout>
+
+## Fide ID Rules
+
+### As Entity Type
+
+- MUST use [Reference Type](/fide-id/specification/index#reference-type) [`DurationLiteral`](/vocabulary/definitions/duration-literal) or [`NetworkResource`](/vocabulary/definitions/network-resource).
+
+
+
+
+### As Reference Type
+
+- [Reference](/fide-id/specification/index#reference) MUST use ISO 8601 duration format ([XML Schema 1.1 Part 2: Datatypes](https://www.w3.org/TR/xmlschema11-2/#duration)).
+
+<details>
+<summary>Duration references MUST begin with `P` and use valid duration components.</summary>
+
+- Valid [Reference](/fide-id/specification/index#reference): `P3D`
+- Valid [Reference](/fide-id/specification/index#reference): `PT1H30M`
+- Invalid [Reference](/fide-id/specification/index#reference): `3 days`
+- Invalid [Reference](/fide-id/specification/index#reference): `1h30m`
+</details>
+
+
+## Examples
+
+| Status | Entity Type | Reference Type | Fide ID Prefix |
+| :--- | :--- | :--- | :--- |
+| Valid | `DurationLiteral` | `DurationLiteral` | `did:fide:0xa7a7` |
+| Invalid | `DurationLiteral` | `TextLiteral` | `did:fide:0xa7a0` |
+

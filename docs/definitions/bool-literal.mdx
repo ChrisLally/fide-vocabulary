@@ -1,0 +1,46 @@
+---
+title: "BoolLiteral"
+description: "A true or false value."
+full: true
+---
+
+## Summary
+
+- **Hex Code:** `a3`
+- **Standard Alignment:** [`rdf:Literal`](https://www.w3.org/1999/02/22-rdf-syntax-ns#Literal) + [`xsd:boolean`](https://www.w3.org/2001/XMLSchema#boolean) (Exact fit)
+
+<Callout type="warning" title="Not">
+  Not a number or string.
+</Callout>
+
+## Fide ID Rules
+
+### As Entity Type
+
+- MUST use [Reference Type](/fide-id/specification/index#reference-type) [`BoolLiteral`](/vocabulary/definitions/bool-literal) or [`NetworkResource`](/vocabulary/definitions/network-resource).
+
+
+
+
+### As Reference Type
+
+- [Reference](/fide-id/specification/index#reference) MUST be `true` or `false` ([XML Schema 1.1 Part 2: Datatypes](https://www.w3.org/TR/xmlschema11-2/#boolean)).
+
+<details>
+<summary>Boolean references MUST use lowercase text values.</summary>
+
+- Valid [Reference](/fide-id/specification/index#reference): `true`
+- Valid [Reference](/fide-id/specification/index#reference): `false`
+- Invalid [Reference](/fide-id/specification/index#reference): `True`
+- Invalid [Reference](/fide-id/specification/index#reference): `FALSE`
+- Invalid [Reference](/fide-id/specification/index#reference): `1`
+</details>
+
+
+## Examples
+
+| Status | Entity Type | Reference Type | Fide ID Prefix |
+| :--- | :--- | :--- | :--- |
+| Valid | `BoolLiteral` | `BoolLiteral` | `did:fide:0xa3a3` |
+| Invalid | `BoolLiteral` | `TextLiteral` | `did:fide:0xa3a0` |
+

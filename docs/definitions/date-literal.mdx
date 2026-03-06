@@ -1,0 +1,44 @@
+---
+title: "DateLiteral"
+description: "A calendar date (YYYY-MM-DD formatted according to ISO 8601)."
+full: true
+---
+
+## Summary
+
+- **Hex Code:** `a4`
+- **Standard Alignment:** [`rdf:Literal`](https://www.w3.org/1999/02/22-rdf-syntax-ns#Literal) + [`xsd:date`](https://www.w3.org/2001/XMLSchema#date) (Exact fit)
+
+<Callout type="warning" title="Not">
+  Not a datetime or time.
+</Callout>
+
+## Fide ID Rules
+
+### As Entity Type
+
+- MUST use [Reference Type](/fide-id/specification/index#reference-type) [`DateLiteral`](/vocabulary/definitions/date-literal) or [`NetworkResource`](/vocabulary/definitions/network-resource).
+
+
+
+
+### As Reference Type
+
+- [Reference](/fide-id/specification/index#reference) MUST use `YYYY-MM-DD` format ([XML Schema 1.1 Part 2: Datatypes](https://www.w3.org/TR/xmlschema11-2/#date)).
+
+<details>
+<summary>Date references MUST use zero-padded month and day values.</summary>
+
+- Valid [Reference](/fide-id/specification/index#reference): `2026-03-05`
+- Invalid [Reference](/fide-id/specification/index#reference): `2026-3-5`
+- Invalid [Reference](/fide-id/specification/index#reference): `03/05/2026`
+</details>
+
+
+## Examples
+
+| Status | Entity Type | Reference Type | Fide ID Prefix |
+| :--- | :--- | :--- | :--- |
+| Valid | `DateLiteral` | `DateLiteral` | `did:fide:0xa4a4` |
+| Invalid | `DateLiteral` | `TextLiteral` | `did:fide:0xa4a0` |
+

@@ -1,0 +1,596 @@
+{
+  "namespaceUrl": "https://fide.work/spec/v1/",
+  "specVersion": "1",
+  "specDate": "2026-02-18",
+  "entityTypes": {
+    "Statement": {
+      "code": "00",
+      "layer": "Graph Structure",
+      "standards": [
+        "rdf:Statement"
+      ],
+      "standardFit": "Exact",
+      "description": "A record of a Subject-Predicate-Object assertion.",
+      "litmus": "Not a verified fact; verification is application-level. Not what it represents.",
+      "fideIdRules": {
+        "referenceTypeRules": {
+          "ruleDetails": [
+            {
+              "rule": "Reference MUST use `subjectFideId|predicateFideId|objectFideId` in that order.",
+              "examples": [
+                "Valid Reference: `did:fide:0x10205fcbdc6d73bcfcd2c73eb4795c2f02f1d1c1|did:fide:0x3120580f7f68f7884e6be0603679f41b39d6d15b|did:fide:0xa0a0ba86d94f45ed925f5a31934b31c3d12c268a`",
+                "Invalid Reference: `did:fide:0x10205fcbdc6d73bcfcd2c73eb4795c2f02f1d1c1|did:fide:0x3120580f7f68f7884e6be0603679f41b39d6d15b`",
+                "Invalid Reference: `subject|predicate|object`"
+              ]
+            }
+          ]
+        },
+        "allowedReferenceTypes": [
+          "Statement"
+        ]
+      }
+    },
+    "Person": {
+      "code": "10",
+      "layer": "Agents",
+      "standards": [
+        "schema:Person"
+      ],
+      "standardFit": "Exact",
+      "description": "A person (alive, dead, undead, or fictional).",
+      "litmus": "Not an account or organization.",
+      "fideIdRules": {
+        "allowedReferenceTypes": [
+          "NetworkResource"
+        ]
+      }
+    },
+    "Organization": {
+      "code": "11",
+      "layer": "Agents",
+      "standards": [
+        "org:Organization"
+      ],
+      "standardFit": "Exact",
+      "description": "A structured collective of people or agents that acts as a unit.",
+      "litmus": "Not a single person or software. Not a query-defined group (e.g. alumni by year); create only when the group itself needs to act.",
+      "fideIdRules": {
+        "allowedReferenceTypes": [
+          "NetworkResource"
+        ]
+      }
+    },
+    "SoftwareAgent": {
+      "code": "12",
+      "layer": "Agents",
+      "standards": [
+        "schema:SoftwareApplication",
+        "prov:SoftwareAgent"
+      ],
+      "standardFit": "Close",
+      "description": "A running process that acts as an independent actor: bot, AI agent, smart contract. Can hold keys and sign.",
+      "litmus": "Not a person or organization. Not static passive code (use CreativeWork for repos, images, logic).",
+      "fideIdRules": {
+        "allowedReferenceTypes": [
+          "NetworkResource"
+        ]
+      }
+    },
+    "NetworkResource": {
+      "code": "20",
+      "layer": "Network Anchors",
+      "standards": [
+        "schema:WebPage",
+        "schema:WebSite",
+        "schema:EntryPoint"
+      ],
+      "standardFit": "Broad",
+      "description": "A resource identified primarily by addressability or resolution, such as a URL, URI, or CID.",
+      "litmus": "Not a subset or account. Not an inhabitable spatial context (use Place).",
+      "fideIdRules": {
+        "referenceTypeRules": {
+          "requirements": [
+            "Reference MUST use an absolute URI in compliance with [RFC 3986](https://www.rfc-editor.org/rfc/rfc3986)."
+          ],
+          "ruleDetails": [
+            {
+              "rule": "`http(s)` references MUST use a non-local hostname and normalized form before hashing, including lowercase protocol and hostname and no default ports, in compliance with the [URL Standard](https://url.spec.whatwg.org/).",
+              "examples": [
+                "Valid Reference: `https://example.com/alice`",
+                "Invalid Reference: `http://localhost/resource`",
+                "Invalid Reference: `https:///alice`",
+                "Invalid Reference: `example.com/alice`",
+                "Invalid Reference: `HTTPS://Example.com:443/alice`"
+              ]
+            },
+            {
+              "rule": "`did` references MUST use `did:<method>:<method-specific-id>` in compliance with [W3C DID](https://www.w3.org/TR/did-core/).",
+              "examples": [
+                "Valid Reference: `did:key:z6Mkw...`",
+                "Valid Reference: `did:fide:0x...`",
+                "Invalid Reference: `fide:0x...`"
+              ]
+            },
+            {
+              "rule": "`urn` references MUST use `urn:<nid>:<nss>` in compliance with [RFC 8141](https://www.rfc-editor.org/rfc/rfc8141).",
+              "examples": [
+                "Valid Reference: `urn:isbn:9780140328721`",
+                "Invalid Reference: `isbn:9780140328721`"
+              ]
+            },
+            {
+              "rule": "`acct` references MUST use `acct:user@host` in compliance with [RFC 7565](https://www.rfc-editor.org/rfc/rfc7565).",
+              "examples": [
+                "Valid Reference: `acct:alice@example.com`",
+                "Invalid Reference: `alice@example.com`"
+              ]
+            },
+            {
+              "rule": "`mailto` references MUST use `mailto:user@example.com` in compliance with [RFC 6068](https://www.rfc-editor.org/rfc/rfc6068).",
+              "examples": [
+                "Valid Reference: `mailto:alice@example.com`",
+                "Invalid Reference: `alice@example.com`"
+              ]
+            },
+            {
+              "rule": "References SHOULD use identifiers that are not expected to change over time when such identifiers are available.",
+              "examples": [
+                "Preferred Reference: `https://orcid.org/0000-0002-1825-0097`",
+                "Less Stable Reference: `https://example.com/@alice`",
+                "Less Stable Reference: `https://example.com/alice`"
+              ]
+            }
+          ]
+        },
+        "allowedReferenceTypes": [
+          "NetworkResource"
+        ]
+      }
+    },
+    "PlatformAccount": {
+      "code": "21",
+      "layer": "Network Anchors",
+      "standards": [
+        "schema:OnlineAccount"
+      ],
+      "standardFit": "Close",
+      "description": "An authority-based account principal (e.g., an email address or a specific GitHub, Google, or Mastodon user ID). The identity exists by the permission of a host system's database.",
+      "litmus": "Authenticated by a host authority's database, not purely by mathematics.",
+      "fideIdRules": {
+        "allowedReferenceTypes": [
+          "NetworkResource"
+        ]
+      }
+    },
+    "CryptographicAccount": {
+      "code": "22",
+      "layer": "Network Anchors",
+      "standards": [
+        "sec:PublicKey",
+        "sec:publicKeyMultibase"
+      ],
+      "standardFit": "Close",
+      "description": "A math-based account principal (e.g., an EVM address, Bitcoin wallet, or did:key). The identity exists mathematically and is authenticated via mathematical signature keys.",
+      "litmus": "Authenticated via mathematical signature keys, independent of a host authority.",
+      "fideIdRules": {
+        "allowedReferenceTypes": [
+          "NetworkResource"
+        ]
+      }
+    },
+    "CreativeWork": {
+      "code": "30",
+      "layer": "Knowledge",
+      "standards": [
+        "schema:CreativeWork"
+      ],
+      "standardFit": "Exact",
+      "description": "The most generic kind of creative work, including books, movies, photographs, software programs, etc. Non-expressive digital artifacts (binaries, model weights, dataset snapshots) are CreativeWork with refinement via Statements (artifactKind, mediaType, generatedBy, derivedFrom).",
+      "litmus": "Not a raw value or formal concept. Not a running agent instance (use SoftwareAgent). Not a resource where location is primary identifier (use NetworkResource).",
+      "fideIdRules": {
+        "allowedReferenceTypes": [
+          "NetworkResource"
+        ]
+      }
+    },
+    "Concept": {
+      "code": "31",
+      "layer": "Knowledge",
+      "standards": [
+        "schema:DefinedTerm"
+      ],
+      "standardFit": "Close",
+      "description": "A formal concept, word, topic, category, or abstract idea defined in a taxonomy.",
+      "litmus": "Not a plain raw value.",
+      "fideIdRules": {
+        "allowedReferenceTypes": [
+          "NetworkResource"
+        ]
+      }
+    },
+    "Place": {
+      "code": "40",
+      "layer": "Spacetime",
+      "standards": [
+        "schema:Place",
+        "schema:VirtualLocation"
+      ],
+      "standardFit": "Broad",
+      "description": "A spatial context that can contain presence, co-location, and interaction. Includes physical locations and persistent virtual environments (e.g., a concert venue, a Discord server or channel, a Zoom room, a VRChat instance). Physicality/virtuality is asserted via Statements, not the base type.",
+      "litmus": "Not a happening or a physical artifact. Can an Actor have presence there? Is its identity a spatial address rather than a document location or account?",
+      "fideIdRules": {
+        "allowedReferenceTypes": [
+          "NetworkResource"
+        ]
+      }
+    },
+    "Event": {
+      "code": "41",
+      "layer": "Spacetime",
+      "standards": [
+        "schema:Event"
+      ],
+      "standardFit": "Exact",
+      "description": "An occurrence or happening bounded in time. Can be observed/aggregated; may be caused by Actions, systems, or nature. Occurs at a Place (physical or virtual).",
+      "litmus": "Not a specific exertion of agency (Action).",
+      "fideIdRules": {
+        "allowedReferenceTypes": [
+          "NetworkResource"
+        ]
+      }
+    },
+    "Action": {
+      "code": "42",
+      "layer": "Spacetime",
+      "standards": [
+        "schema:Action",
+        "prov:Activity"
+      ],
+      "standardFit": "Close",
+      "description": "A discrete assertion or commitment attributable to an Agent. Often produces or records a change (e.g., a transaction, API call, signature). Can be linked to Events via Statements (causes, records, resultsIn).",
+      "litmus": "Not a broad temporal happening (Event); must be driven by an Agent.",
+      "fideIdRules": {
+        "allowedReferenceTypes": [
+          "NetworkResource"
+        ]
+      }
+    },
+    "PhysicalObject": {
+      "code": "43",
+      "layer": "Spacetime",
+      "standards": [
+        "schema:Product",
+        "schema:Thing"
+      ],
+      "standardFit": "Close",
+      "description": "A tangible, inanimate physical object (e.g., hardware, vehicle, physical document, natural object). Physical only. Use Statements (madeBy, manufactured=true) if man-made vs natural matters.",
+      "litmus": "Not a location (where). Not a digital artifact (use CreativeWork).",
+      "fideIdRules": {
+        "allowedReferenceTypes": [
+          "NetworkResource"
+        ]
+      }
+    },
+    "TextLiteral": {
+      "code": "a0",
+      "layer": "Literals",
+      "standards": [
+        "rdf:Literal",
+        "xsd:string"
+      ],
+      "standardFit": "Exact",
+      "description": "A plain text sequence of characters.",
+      "litmus": "Not a Concept.",
+      "fideIdRules": {
+        "referenceTypeRules": {
+          "requirements": [
+            "Reference MUST use the exact text value."
+          ]
+        },
+        "allowedReferenceTypes": [
+          "TextLiteral",
+          "NetworkResource"
+        ]
+      }
+    },
+    "IntegerLiteral": {
+      "code": "a1",
+      "layer": "Literals",
+      "standards": [
+        "rdf:Literal",
+        "xsd:integer"
+      ],
+      "standardFit": "Exact",
+      "description": "A whole number.",
+      "litmus": "Not a decimal or string.",
+      "fideIdRules": {
+        "referenceTypeRules": {
+          "requirements": [
+            "Reference MUST use a base-10 integer string ([XML Schema 1.1 Part 2: Datatypes](https://www.w3.org/TR/xmlschema11-2/#integer))."
+          ],
+          "ruleDetails": [
+            {
+              "rule": "Integer references MUST NOT use decimal points, scientific notation, or thousands separators.",
+              "examples": [
+                "Valid Reference: `42`",
+                "Valid Reference: `-7`",
+                "Invalid Reference: `4.2`",
+                "Invalid Reference: `1e3`",
+                "Invalid Reference: `1,000`"
+              ]
+            }
+          ]
+        },
+        "allowedReferenceTypes": [
+          "IntegerLiteral",
+          "NetworkResource"
+        ]
+      }
+    },
+    "DecimalLiteral": {
+      "code": "a2",
+      "layer": "Literals",
+      "standards": [
+        "rdf:Literal",
+        "xsd:decimal"
+      ],
+      "standardFit": "Exact",
+      "description": "A decimal or floating-point number.",
+      "litmus": "Not an integer.",
+      "fideIdRules": {
+        "referenceTypeRules": {
+          "requirements": [
+            "Reference MUST use a base-10 decimal string ([XML Schema 1.1 Part 2: Datatypes](https://www.w3.org/TR/xmlschema11-2/#decimal))."
+          ],
+          "ruleDetails": [
+            {
+              "rule": "Decimal references MUST NOT use scientific notation or thousands separators.",
+              "examples": [
+                "Valid Reference: `4.2`",
+                "Valid Reference: `-0.5`",
+                "Invalid Reference: `1e3`",
+                "Invalid Reference: `1,000.50`"
+              ]
+            }
+          ]
+        },
+        "allowedReferenceTypes": [
+          "DecimalLiteral",
+          "NetworkResource"
+        ]
+      }
+    },
+    "BoolLiteral": {
+      "code": "a3",
+      "layer": "Literals",
+      "standards": [
+        "rdf:Literal",
+        "xsd:boolean"
+      ],
+      "standardFit": "Exact",
+      "description": "A true or false value.",
+      "litmus": "Not a number or string.",
+      "fideIdRules": {
+        "referenceTypeRules": {
+          "requirements": [
+            "Reference MUST be `true` or `false` ([XML Schema 1.1 Part 2: Datatypes](https://www.w3.org/TR/xmlschema11-2/#boolean))."
+          ],
+          "ruleDetails": [
+            {
+              "rule": "Boolean references MUST use lowercase text values.",
+              "examples": [
+                "Valid Reference: `true`",
+                "Valid Reference: `false`",
+                "Invalid Reference: `True`",
+                "Invalid Reference: `FALSE`",
+                "Invalid Reference: `1`"
+              ]
+            }
+          ]
+        },
+        "allowedReferenceTypes": [
+          "BoolLiteral",
+          "NetworkResource"
+        ]
+      }
+    },
+    "DateLiteral": {
+      "code": "a4",
+      "layer": "Literals",
+      "standards": [
+        "rdf:Literal",
+        "xsd:date"
+      ],
+      "standardFit": "Exact",
+      "description": "A calendar date (YYYY-MM-DD formatted according to ISO 8601).",
+      "litmus": "Not a datetime or time.",
+      "fideIdRules": {
+        "referenceTypeRules": {
+          "requirements": [
+            "Reference MUST use `YYYY-MM-DD` format ([XML Schema 1.1 Part 2: Datatypes](https://www.w3.org/TR/xmlschema11-2/#date))."
+          ],
+          "ruleDetails": [
+            {
+              "rule": "Date references MUST use zero-padded month and day values.",
+              "examples": [
+                "Valid Reference: `2026-03-05`",
+                "Invalid Reference: `2026-3-5`",
+                "Invalid Reference: `03/05/2026`"
+              ]
+            }
+          ]
+        },
+        "allowedReferenceTypes": [
+          "DateLiteral",
+          "NetworkResource"
+        ]
+      }
+    },
+    "TimeLiteral": {
+      "code": "a5",
+      "layer": "Literals",
+      "standards": [
+        "rdf:Literal",
+        "xsd:time"
+      ],
+      "standardFit": "Exact",
+      "description": "A time of day (formatted according to ISO 8601, represented in UTC).",
+      "litmus": "Not a date or datetime.",
+      "fideIdRules": {
+        "referenceTypeRules": {
+          "requirements": [
+            "Reference MUST use UTC time format with a trailing `Z` ([XML Schema 1.1 Part 2: Datatypes](https://www.w3.org/TR/xmlschema11-2/#time))."
+          ],
+          "ruleDetails": [
+            {
+              "rule": "Time references MUST use zero-padded hour, minute, and second values.",
+              "examples": [
+                "Valid Reference: `14:30:00Z`",
+                "Invalid Reference: `14:30:00`",
+                "Invalid Reference: `2:30 PM`"
+              ]
+            }
+          ]
+        },
+        "allowedReferenceTypes": [
+          "TimeLiteral",
+          "NetworkResource"
+        ]
+      }
+    },
+    "DateTimeLiteral": {
+      "code": "a6",
+      "layer": "Literals",
+      "standards": [
+        "rdf:Literal",
+        "xsd:dateTime"
+      ],
+      "standardFit": "Exact",
+      "description": "A specific point in time (ISO 8601 formatted, UTC normalized).",
+      "litmus": "Not a date or time alone.",
+      "fideIdRules": {
+        "referenceTypeRules": {
+          "requirements": [
+            "Reference MUST use UTC datetime format with a trailing `Z` ([XML Schema 1.1 Part 2: Datatypes](https://www.w3.org/TR/xmlschema11-2/#dateTime))."
+          ],
+          "ruleDetails": [
+            {
+              "rule": "Datetime references MUST use `YYYY-MM-DDTHH:MM:SSZ` format.",
+              "examples": [
+                "Valid Reference: `2026-03-05T14:30:00Z`",
+                "Invalid Reference: `2026-03-05 14:30:00`",
+                "Invalid Reference: `2026-03-05T14:30:00-05:00`"
+              ]
+            }
+          ]
+        },
+        "allowedReferenceTypes": [
+          "DateTimeLiteral",
+          "NetworkResource"
+        ]
+      }
+    },
+    "DurationLiteral": {
+      "code": "a7",
+      "layer": "Literals",
+      "standards": [
+        "rdf:Literal",
+        "xsd:duration"
+      ],
+      "standardFit": "Exact",
+      "description": "A calculated amount of elapsed time (ISO 8601 duration format).",
+      "litmus": "Not a datetime.",
+      "fideIdRules": {
+        "referenceTypeRules": {
+          "requirements": [
+            "Reference MUST use ISO 8601 duration format ([XML Schema 1.1 Part 2: Datatypes](https://www.w3.org/TR/xmlschema11-2/#duration))."
+          ],
+          "ruleDetails": [
+            {
+              "rule": "Duration references MUST begin with `P` and use valid duration components.",
+              "examples": [
+                "Valid Reference: `P3D`",
+                "Valid Reference: `PT1H30M`",
+                "Invalid Reference: `3 days`",
+                "Invalid Reference: `1h30m`"
+              ]
+            }
+          ]
+        },
+        "allowedReferenceTypes": [
+          "DurationLiteral",
+          "NetworkResource"
+        ]
+      }
+    },
+    "URILiteral": {
+      "code": "a8",
+      "layer": "Literals",
+      "standards": [
+        "rdf:Literal",
+        "xsd:anyURI"
+      ],
+      "standardFit": "Exact",
+      "description": "A formalized Uniform Resource Identifier string.",
+      "litmus": "Not plain text.",
+      "fideIdRules": {
+        "referenceTypeRules": {
+          "ruleDetails": [
+            {
+              "rule": "Reference Type `URILiteral` is only valid when the Entity Type is also `URILiteral`.",
+              "examples": [
+                "Valid Entity Type: `URILiteral`",
+                "Invalid Entity Type: `Person`",
+                "Invalid Entity Type: `TextLiteral`"
+              ]
+            },
+            {
+              "rule": "Reference MUST be a valid URI string in compliance with [RFC 3986](https://www.rfc-editor.org/rfc/rfc3986).",
+              "examples": [
+                "Valid Reference: `mailto:alice@example.com`",
+                "Valid Reference: `urn:isbn:9780140328721`",
+                "Invalid Reference: `example.com/alice`"
+              ]
+            }
+          ]
+        },
+        "allowedReferenceTypes": [
+          "URILiteral",
+          "NetworkResource"
+        ]
+      }
+    },
+    "JSONLiteral": {
+      "code": "a9",
+      "layer": "Literals",
+      "standards": [
+        "rdf:Literal",
+        "rdf:JSON"
+      ],
+      "standardFit": "Exact",
+      "description": "A structured JSON object represented in canonical string form.",
+      "litmus": "Not a string.",
+      "fideIdRules": {
+        "referenceTypeRules": {
+          "requirements": [
+            "Reference MUST use canonical JSON string form ([RFC 8785](https://www.rfc-editor.org/rfc/rfc8785))."
+          ],
+          "ruleDetails": [
+            {
+              "rule": "JSON references MUST be serialized in a stable canonical form before hashing.",
+              "examples": [
+                "Valid Reference: `{\"a\":1,\"b\":2}`",
+                "Invalid Reference: `{\"b\":2,\"a\":1}`",
+                "Invalid Reference: `{ \"a\": 1, \"b\": 2 }`"
+              ]
+            }
+          ]
+        },
+        "allowedReferenceTypes": [
+          "JSONLiteral",
+          "NetworkResource"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+---
+title: "CreativeWork"
+description: "The most generic kind of creative work, including books, movies, photographs, software programs, etc. Non-expressive digital artifacts (binaries, model weights, dataset snapshots) are CreativeWork with refinement via Statements (artifactKind, mediaType, generatedBy, derivedFrom)."
+full: true
+---
+
+## Summary
+
+- **Hex Code:** `30`
+- **Standard Alignment:** [`schema:CreativeWork`](https://schema.org/CreativeWork) (Exact fit)
+
+<Callout type="warning" title="Not">
+  Not a raw value or formal concept. Not a running agent instance (use SoftwareAgent). Not a resource where location is primary identifier (use NetworkResource).
+</Callout>
+
+## Fide ID Rules
+
+### As Entity Type
+
+- MUST use [Reference Type](/fide-id/specification/index#reference-type) [`NetworkResource`](/vocabulary/definitions/network-resource).
+
+
+
+
+
+## Examples
+
+| Status | Entity Type | Reference Type | Fide ID Prefix |
+| :--- | :--- | :--- | :--- |
+| Valid | `CreativeWork` | `NetworkResource` | `did:fide:0x3020` |
+| Invalid | `CreativeWork` | `Statement` | `did:fide:0x3000` |
+

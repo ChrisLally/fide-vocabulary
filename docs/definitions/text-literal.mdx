@@ -1,0 +1,37 @@
+---
+title: "TextLiteral"
+description: "A plain text sequence of characters."
+full: true
+---
+
+## Summary
+
+- **Hex Code:** `a0`
+- **Standard Alignment:** [`rdf:Literal`](https://www.w3.org/1999/02/22-rdf-syntax-ns#Literal) + [`xsd:string`](https://www.w3.org/2001/XMLSchema#string) (Exact fit)
+
+<Callout type="warning" title="Not">
+  Not a Concept.
+</Callout>
+
+## Fide ID Rules
+
+### As Entity Type
+
+- MUST use [Reference Type](/fide-id/specification/index#reference-type) [`TextLiteral`](/vocabulary/definitions/text-literal) or [`NetworkResource`](/vocabulary/definitions/network-resource).
+
+
+
+
+### As Reference Type
+
+- [Reference](/fide-id/specification/index#reference) MUST use the exact text value.
+
+
+
+## Examples
+
+| Status | Entity Type | Reference Type | Fide ID Prefix |
+| :--- | :--- | :--- | :--- |
+| Valid | `TextLiteral` | `TextLiteral` | `did:fide:0xa0a0` |
+| Invalid | `TextLiteral` | `IntegerLiteral` | `did:fide:0xa0a1` |
+

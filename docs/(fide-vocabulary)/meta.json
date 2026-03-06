@@ -1,0 +1,7 @@
+{
+  "title": "Start",
+  "root": true,
+  "pages": [
+    "index","quickstart"
+  ]
+}

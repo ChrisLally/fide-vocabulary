@@ -1,0 +1,14 @@
+{
+  "title": "SDK",
+  "description": "Generated SDK reference",
+  "root": true,
+  "defaultOpen": false,
+  "icon": "Box",
+  "pages": [
+    "index",
+    "--- Vocabulary ---",
+    "get-fide-entity-type-spec-by-code",
+    "get-fide-entity-type-spec-by-name",
+    "list-fide-entity-types"
+  ]
+}

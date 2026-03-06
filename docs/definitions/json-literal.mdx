@@ -1,0 +1,44 @@
+---
+title: "JSONLiteral"
+description: "A structured JSON object represented in canonical string form."
+full: true
+---
+
+## Summary
+
+- **Hex Code:** `a9`
+- **Standard Alignment:** [`rdf:Literal`](https://www.w3.org/1999/02/22-rdf-syntax-ns#Literal) + [`rdf:JSON`](https://www.w3.org/1999/02/22-rdf-syntax-ns#JSON) (Exact fit)
+
+<Callout type="warning" title="Not">
+  Not a string.
+</Callout>
+
+## Fide ID Rules
+
+### As Entity Type
+
+- MUST use [Reference Type](/fide-id/specification/index#reference-type) [`JSONLiteral`](/vocabulary/definitions/json-literal) or [`NetworkResource`](/vocabulary/definitions/network-resource).
+
+
+
+
+### As Reference Type
+
+- [Reference](/fide-id/specification/index#reference) MUST use canonical JSON string form ([RFC 8785](https://www.rfc-editor.org/rfc/rfc8785)).
+
+<details>
+<summary>JSON references MUST be serialized in a stable canonical form before hashing.</summary>
+
+- Valid [Reference](/fide-id/specification/index#reference): `{"a":1,"b":2}`
+- Invalid [Reference](/fide-id/specification/index#reference): `{"b":2,"a":1}`
+- Invalid [Reference](/fide-id/specification/index#reference): `{ "a": 1, "b": 2 }`
+</details>
+
+
+## Examples
+
+| Status | Entity Type | Reference Type | Fide ID Prefix |
+| :--- | :--- | :--- | :--- |
+| Valid | `JSONLiteral` | `JSONLiteral` | `did:fide:0xa9a9` |
+| Invalid | `JSONLiteral` | `TextLiteral` | `did:fide:0xa9a0` |
+

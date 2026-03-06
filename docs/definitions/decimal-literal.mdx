@@ -1,0 +1,45 @@
+---
+title: "DecimalLiteral"
+description: "A decimal or floating-point number."
+full: true
+---
+
+## Summary
+
+- **Hex Code:** `a2`
+- **Standard Alignment:** [`rdf:Literal`](https://www.w3.org/1999/02/22-rdf-syntax-ns#Literal) + [`xsd:decimal`](https://www.w3.org/2001/XMLSchema#decimal) (Exact fit)
+
+<Callout type="warning" title="Not">
+  Not an integer.
+</Callout>
+
+## Fide ID Rules
+
+### As Entity Type
+
+- MUST use [Reference Type](/fide-id/specification/index#reference-type) [`DecimalLiteral`](/vocabulary/definitions/decimal-literal) or [`NetworkResource`](/vocabulary/definitions/network-resource).
+
+
+
+
+### As Reference Type
+
+- [Reference](/fide-id/specification/index#reference) MUST use a base-10 decimal string ([XML Schema 1.1 Part 2: Datatypes](https://www.w3.org/TR/xmlschema11-2/#decimal)).
+
+<details>
+<summary>Decimal references MUST NOT use scientific notation or thousands separators.</summary>
+
+- Valid [Reference](/fide-id/specification/index#reference): `4.2`
+- Valid [Reference](/fide-id/specification/index#reference): `-0.5`
+- Invalid [Reference](/fide-id/specification/index#reference): `1e3`
+- Invalid [Reference](/fide-id/specification/index#reference): `1,000.50`
+</details>
+
+
+## Examples
+
+| Status | Entity Type | Reference Type | Fide ID Prefix |
+| :--- | :--- | :--- | :--- |
+| Valid | `DecimalLiteral` | `DecimalLiteral` | `did:fide:0xa2a2` |
+| Invalid | `DecimalLiteral` | `TextLiteral` | `did:fide:0xa2a0` |
+

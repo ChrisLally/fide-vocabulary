@@ -1,0 +1,46 @@
+---
+title: "IntegerLiteral"
+description: "A whole number."
+full: true
+---
+
+## Summary
+
+- **Hex Code:** `a1`
+- **Standard Alignment:** [`rdf:Literal`](https://www.w3.org/1999/02/22-rdf-syntax-ns#Literal) + [`xsd:integer`](https://www.w3.org/2001/XMLSchema#integer) (Exact fit)
+
+<Callout type="warning" title="Not">
+  Not a decimal or string.
+</Callout>
+
+## Fide ID Rules
+
+### As Entity Type
+
+- MUST use [Reference Type](/fide-id/specification/index#reference-type) [`IntegerLiteral`](/vocabulary/definitions/integer-literal) or [`NetworkResource`](/vocabulary/definitions/network-resource).
+
+
+
+
+### As Reference Type
+
+- [Reference](/fide-id/specification/index#reference) MUST use a base-10 integer string ([XML Schema 1.1 Part 2: Datatypes](https://www.w3.org/TR/xmlschema11-2/#integer)).
+
+<details>
+<summary>Integer references MUST NOT use decimal points, scientific notation, or thousands separators.</summary>
+
+- Valid [Reference](/fide-id/specification/index#reference): `42`
+- Valid [Reference](/fide-id/specification/index#reference): `-7`
+- Invalid [Reference](/fide-id/specification/index#reference): `4.2`
+- Invalid [Reference](/fide-id/specification/index#reference): `1e3`
+- Invalid [Reference](/fide-id/specification/index#reference): `1,000`
+</details>
+
+
+## Examples
+
+| Status | Entity Type | Reference Type | Fide ID Prefix |
+| :--- | :--- | :--- | :--- |
+| Valid | `IntegerLiteral` | `IntegerLiteral` | `did:fide:0xa1a1` |
+| Invalid | `IntegerLiteral` | `TextLiteral` | `did:fide:0xa1a0` |
+

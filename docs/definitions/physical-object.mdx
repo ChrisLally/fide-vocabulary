@@ -1,0 +1,32 @@
+---
+title: "PhysicalObject"
+description: "A tangible, inanimate physical object (e.g., hardware, vehicle, physical document, natural object). Physical only. Use Statements (madeBy, manufactured=true) if man-made vs natural matters."
+full: true
+---
+
+## Summary
+
+- **Hex Code:** `43`
+- **Standard Alignment:** [`schema:Product`](https://schema.org/Product) + [`schema:Thing`](https://schema.org/Thing) (Close fit)
+
+<Callout type="warning" title="Not">
+  Not a location (where). Not a digital artifact (use CreativeWork).
+</Callout>
+
+## Fide ID Rules
+
+### As Entity Type
+
+- MUST use [Reference Type](/fide-id/specification/index#reference-type) [`NetworkResource`](/vocabulary/definitions/network-resource).
+
+
+
+
+
+## Examples
+
+| Status | Entity Type | Reference Type | Fide ID Prefix |
+| :--- | :--- | :--- | :--- |
+| Valid | `PhysicalObject` | `NetworkResource` | `did:fide:0x4320` |
+| Invalid | `PhysicalObject` | `Statement` | `did:fide:0x4300` |
+

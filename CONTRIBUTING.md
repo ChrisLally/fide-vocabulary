@@ -1,0 +1,1 @@
+# Contributing to Fide ID did:fide Method

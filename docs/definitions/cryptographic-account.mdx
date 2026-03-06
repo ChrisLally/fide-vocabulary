@@ -1,0 +1,32 @@
+---
+title: "CryptographicAccount"
+description: "A math-based account principal (e.g., an EVM address, Bitcoin wallet, or did:key). The identity exists mathematically and is authenticated via mathematical signature keys."
+full: true
+---
+
+## Summary
+
+- **Hex Code:** `22`
+- **Standard Alignment:** [`sec:PublicKey`](https://w3id.org/security#PublicKey) + [`sec:publicKeyMultibase`](https://w3id.org/security#publicKeyMultibase) (Close fit)
+
+<Callout type="warning" title="Not">
+  Authenticated via mathematical signature keys, independent of a host authority.
+</Callout>
+
+## Fide ID Rules
+
+### As Entity Type
+
+- MUST use [Reference Type](/fide-id/specification/index#reference-type) [`NetworkResource`](/vocabulary/definitions/network-resource).
+
+
+
+
+
+## Examples
+
+| Status | Entity Type | Reference Type | Fide ID Prefix |
+| :--- | :--- | :--- | :--- |
+| Valid | `CryptographicAccount` | `NetworkResource` | `did:fide:0x2220` |
+| Invalid | `CryptographicAccount` | `Statement` | `did:fide:0x2200` |
+

@@ -1,0 +1,32 @@
+---
+title: "PlatformAccount"
+description: "An authority-based account principal (e.g., an email address or a specific GitHub, Google, or Mastodon user ID). The identity exists by the permission of a host system's database."
+full: true
+---
+
+## Summary
+
+- **Hex Code:** `21`
+- **Standard Alignment:** [`schema:OnlineAccount`](https://schema.org/OnlineAccount) (Close fit)
+
+<Callout type="warning" title="Not">
+  Authenticated by a host authority's database, not purely by mathematics.
+</Callout>
+
+## Fide ID Rules
+
+### As Entity Type
+
+- MUST use [Reference Type](/fide-id/specification/index#reference-type) [`NetworkResource`](/vocabulary/definitions/network-resource).
+
+
+
+
+
+## Examples
+
+| Status | Entity Type | Reference Type | Fide ID Prefix |
+| :--- | :--- | :--- | :--- |
+| Valid | `PlatformAccount` | `NetworkResource` | `did:fide:0x2120` |
+| Invalid | `PlatformAccount` | `Statement` | `did:fide:0x2100` |
+

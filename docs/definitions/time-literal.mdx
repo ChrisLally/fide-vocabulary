@@ -1,0 +1,44 @@
+---
+title: "TimeLiteral"
+description: "A time of day (formatted according to ISO 8601, represented in UTC)."
+full: true
+---
+
+## Summary
+
+- **Hex Code:** `a5`
+- **Standard Alignment:** [`rdf:Literal`](https://www.w3.org/1999/02/22-rdf-syntax-ns#Literal) + [`xsd:time`](https://www.w3.org/2001/XMLSchema#time) (Exact fit)
+
+<Callout type="warning" title="Not">
+  Not a date or datetime.
+</Callout>
+
+## Fide ID Rules
+
+### As Entity Type
+
+- MUST use [Reference Type](/fide-id/specification/index#reference-type) [`TimeLiteral`](/vocabulary/definitions/time-literal) or [`NetworkResource`](/vocabulary/definitions/network-resource).
+
+
+
+
+### As Reference Type
+
+- [Reference](/fide-id/specification/index#reference) MUST use UTC time format with a trailing `Z` ([XML Schema 1.1 Part 2: Datatypes](https://www.w3.org/TR/xmlschema11-2/#time)).
+
+<details>
+<summary>Time references MUST use zero-padded hour, minute, and second values.</summary>
+
+- Valid [Reference](/fide-id/specification/index#reference): `14:30:00Z`
+- Invalid [Reference](/fide-id/specification/index#reference): `14:30:00`
+- Invalid [Reference](/fide-id/specification/index#reference): `2:30 PM`
+</details>
+
+
+## Examples
+
+| Status | Entity Type | Reference Type | Fide ID Prefix |
+| :--- | :--- | :--- | :--- |
+| Valid | `TimeLiteral` | `TimeLiteral` | `did:fide:0xa5a5` |
+| Invalid | `TimeLiteral` | `TextLiteral` | `did:fide:0xa5a0` |
+

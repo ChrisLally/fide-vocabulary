@@ -1,0 +1,51 @@
+---
+title: "URILiteral"
+description: "A formalized Uniform Resource Identifier string."
+full: true
+---
+
+## Summary
+
+- **Hex Code:** `a8`
+- **Standard Alignment:** [`rdf:Literal`](https://www.w3.org/1999/02/22-rdf-syntax-ns#Literal) + [`xsd:anyURI`](https://www.w3.org/2001/XMLSchema#anyURI) (Exact fit)
+
+<Callout type="warning" title="Not">
+  Not plain text.
+</Callout>
+
+## Fide ID Rules
+
+### As Entity Type
+
+- MUST use [Reference Type](/fide-id/specification/index#reference-type) [`URILiteral`](/vocabulary/definitions/uri-literal) or [`NetworkResource`](/vocabulary/definitions/network-resource).
+
+
+
+
+### As Reference Type
+
+
+<details>
+<summary>[[Reference](/fide-id/specification/index#reference) Type](/fide-id/specification/index#reference-type) [`URILiteral`](/vocabulary/definitions/uri-literal) is only valid when the [Entity Type](/fide-id/specification/index#entity-type) is also [`URILiteral`](/vocabulary/definitions/uri-literal).</summary>
+
+- Valid [Entity Type](/fide-id/specification/index#entity-type): [`URILiteral`](/vocabulary/definitions/uri-literal)
+- Invalid [Entity Type](/fide-id/specification/index#entity-type): [`Person`](/vocabulary/definitions/person)
+- Invalid [Entity Type](/fide-id/specification/index#entity-type): [`TextLiteral`](/vocabulary/definitions/text-literal)
+</details>
+
+<details>
+<summary>[Reference](/fide-id/specification/index#reference) MUST be a valid URI string in compliance with [RFC 3986](https://www.rfc-editor.org/rfc/rfc3986).</summary>
+
+- Valid [Reference](/fide-id/specification/index#reference): `mailto:alice@example.com`
+- Valid [Reference](/fide-id/specification/index#reference): `urn:isbn:9780140328721`
+- Invalid [Reference](/fide-id/specification/index#reference): `example.com/alice`
+</details>
+
+
+## Examples
+
+| Status | Entity Type | Reference Type | Fide ID Prefix |
+| :--- | :--- | :--- | :--- |
+| Valid | `URILiteral` | `URILiteral` | `did:fide:0xa8a8` |
+| Invalid | `URILiteral` | `TextLiteral` | `did:fide:0xa8a0` |
+

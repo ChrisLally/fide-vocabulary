@@ -1,0 +1,55 @@
+---
+title: "Statement"
+description: "A record of a Subject-Predicate-Object assertion."
+full: true
+---
+
+## Summary
+
+- **Hex Code:** `00`
+- **Standard Alignment:** [`rdf:Statement`](https://www.w3.org/1999/02/22-rdf-syntax-ns#Statement) (Exact fit)
+
+<Callout type="warning" title="Not">
+  Not a verified fact; verification is application-level. Not what it represents.
+</Callout>
+<Callout title="Statements Specification">
+  See [Statements Specification](/fcp/specification/statements) for the protocol-level statement structure.
+</Callout>
+
+
+## Fide ID Rules
+
+### As Entity Type
+
+- MUST use [Reference Type](/fide-id/specification/index#reference-type) [`Statement`](/vocabulary/definitions/statement).
+
+
+
+
+### As Reference Type
+
+
+<details>
+<summary>[Reference](/fide-id/specification/index#reference) MUST use `subjectFideId|predicateFideId|objectFideId` in that order.</summary>
+
+- Valid Reference:
+
+```text
+did:fide:0x10205fcbdc6d73bcfcd2c73eb4795c2f02f1d1c1|did:fide:0x3120580f7f68f7884e6be0603679f41b39d6d15b|did:fide:0xa0a0ba86d94f45ed925f5a31934b31c3d12c268a
+```
+- Invalid Reference:
+
+```text
+did:fide:0x10205fcbdc6d73bcfcd2c73eb4795c2f02f1d1c1|did:fide:0x3120580f7f68f7884e6be0603679f41b39d6d15b
+```
+- Invalid [Reference](/fide-id/specification/index#reference): `subject|predicate|object`
+</details>
+
+
+## Examples
+
+| Status | Entity Type | Reference Type | Fide ID Prefix |
+| :--- | :--- | :--- | :--- |
+| Valid | `Statement` | `Statement` | `did:fide:0x0000` |
+| Invalid | `Statement` | `URILiteral` | `did:fide:0x00a8` |
+
