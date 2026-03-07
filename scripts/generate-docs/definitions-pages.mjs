@@ -293,9 +293,11 @@ ${referenceTypeRuleDetailsBlock}`
 
   const fideIdRulesSection = entity.fideIdRules || referenceTypeRules
     ? `
+---
+
 ## Fide ID Rules
 
-These rules define how ${entity.name} can appear inside a [Fide ID](/fide-id).
+These entity-specific constraints apply when ${entity.name} is used in [Fide ID](/fide-id).
 ${entityTypeRulesSection}
 ${asReferenceTypeSection}`
     : '';
