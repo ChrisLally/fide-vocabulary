@@ -4,16 +4,18 @@ description: "An authority-based account principal (e.g., an email address or a 
 full: true
 ---
 
-## Summary
+## Definition
 
+An authority-based account principal (e.g., an email address or a specific GitHub, Google, or Mastodon user ID). The identity exists by the permission of a host system's database.
+
+- **Boundaries:** Authenticated by a host authority's database, not purely by mathematics.
 - **Hex Code:** `21`
 - **Standard Alignment:** [`schema:OnlineAccount`](https://schema.org/OnlineAccount) (Close fit)
 
-<Callout type="warning" title="Not">
-  Authenticated by a host authority's database, not purely by mathematics.
-</Callout>
 
 ## Fide ID Rules
+
+These rules define how PlatformAccount can appear inside a [Fide ID](/fide-id).
 
 ### As Entity Type
 

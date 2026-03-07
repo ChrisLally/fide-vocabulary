@@ -7,7 +7,7 @@ description: Fide Entity Types and identifier rules.
 
 Entity types that define the structure of the graph itself.
 
-| Entity | Code | Definition | Not |
+| Entity | Code | Definition | Boundaries |
 | :--- | :--- | :--- | :--- |
 | [`Statement`](/vocabulary/definitions/statement) | `00` | A record of a Subject-Predicate-Object assertion. | Not a verified fact; verification is application-level. Not what it represents. |
 
@@ -15,7 +15,7 @@ Entity types that define the structure of the graph itself.
 
 Entities with agency - they make decisions, take actions, and bear responsibility.
 
-| Entity | Code | Definition | Not |
+| Entity | Code | Definition | Boundaries |
 | :--- | :--- | :--- | :--- |
 | [`Person`](/vocabulary/definitions/person) | `10` | A person (alive, dead, undead, or fictional). | Not an account or organization. |
 | [`Organization`](/vocabulary/definitions/organization) | `11` | A structured collective of people or agents that acts as a unit. | Not a single person or software. Not a query-defined group (e.g. alumni by year); create only when the group itself needs to act. |
@@ -25,7 +25,7 @@ Entities with agency - they make decisions, take actions, and bear responsibilit
 
 Network addresses where evidence lives: resolvable locations, platform handles, and cryptographic principals.
 
-| Entity | Code | Definition | Not |
+| Entity | Code | Definition | Boundaries |
 | :--- | :--- | :--- | :--- |
 | [`NetworkResource`](/vocabulary/definitions/network-resource) | `20` | A resource identified primarily by addressability or resolution, such as a URL, URI, or CID. | Not a subset or account. Not an inhabitable spatial context (use Place). |
 | [`PlatformAccount`](/vocabulary/definitions/platform-account) | `21` | An authority-based account principal (e.g., an email address or a specific GitHub, Google, or Mastodon user ID). The identity exists by the permission of a host system's database. | Authenticated by a host authority's database, not purely by mathematics. |
@@ -35,7 +35,7 @@ Network addresses where evidence lives: resolvable locations, platform handles, 
 
 Things that represent intellectual property, abstract ideas, or data structures.
 
-| Entity | Code | Definition | Not |
+| Entity | Code | Definition | Boundaries |
 | :--- | :--- | :--- | :--- |
 | [`CreativeWork`](/vocabulary/definitions/creative-work) | `30` | The most generic kind of creative work, including books, movies, photographs, software programs, etc. Non-expressive digital artifacts (binaries, model weights, dataset snapshots) are CreativeWork with refinement via Statements (artifactKind, mediaType, generatedBy, derivedFrom). | Not a raw value or formal concept. Not a running agent instance (use SoftwareAgent). Not a resource where location is primary identifier (use NetworkResource). |
 | [`Concept`](/vocabulary/definitions/concept) | `31` | A formal concept, word, topic, category, or abstract idea defined in a taxonomy. | Not a plain raw value. |
@@ -44,7 +44,7 @@ Things that represent intellectual property, abstract ideas, or data structures.
 
 Entities bounded in time; optionally in physical or virtual space. Substrate-neutral Places, Events, Actions, and physical Objects.
 
-| Entity | Code | Definition | Not |
+| Entity | Code | Definition | Boundaries |
 | :--- | :--- | :--- | :--- |
 | [`Place`](/vocabulary/definitions/place) | `40` | A spatial context that can contain presence, co-location, and interaction. Includes physical locations and persistent virtual environments (e.g., a concert venue, a Discord server or channel, a Zoom room, a VRChat instance). Physicality/virtuality is asserted via Statements, not the base type. | Not a happening or a physical artifact. Can an Actor have presence there? Is its identity a spatial address rather than a document location or account? |
 | [`Event`](/vocabulary/definitions/event) | `41` | An occurrence or happening bounded in time. Can be observed/aggregated; may be caused by Actions, systems, or nature. Occurs at a Place (physical or virtual). | Not a specific exertion of agency (Action). |
@@ -55,7 +55,7 @@ Entities bounded in time; optionally in physical or virtual space. Substrate-neu
 
 Typed scalar literals represented as first-class addressed values.
 
-| Entity | Code | Definition | Not |
+| Entity | Code | Definition | Boundaries |
 | :--- | :--- | :--- | :--- |
 | [`TextLiteral`](/vocabulary/definitions/text-literal) | `a0` | A plain text sequence of characters. | Not a Concept. |
 | [`IntegerLiteral`](/vocabulary/definitions/integer-literal) | `a1` | A whole number. | Not a decimal or string. |

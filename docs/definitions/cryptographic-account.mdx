@@ -4,16 +4,18 @@ description: "A math-based account principal (e.g., an EVM address, Bitcoin wall
 full: true
 ---
 
-## Summary
+## Definition
 
+A math-based account principal (e.g., an EVM address, Bitcoin wallet, or did:key). The identity exists mathematically and is authenticated via mathematical signature keys.
+
+- **Boundaries:** Authenticated via mathematical signature keys, independent of a host authority.
 - **Hex Code:** `22`
 - **Standard Alignment:** [`sec:PublicKey`](https://w3id.org/security#PublicKey) + [`sec:publicKeyMultibase`](https://w3id.org/security#publicKeyMultibase) (Close fit)
 
-<Callout type="warning" title="Not">
-  Authenticated via mathematical signature keys, independent of a host authority.
-</Callout>
 
 ## Fide ID Rules
+
+These rules define how CryptographicAccount can appear inside a [Fide ID](/fide-id).
 
 ### As Entity Type
 

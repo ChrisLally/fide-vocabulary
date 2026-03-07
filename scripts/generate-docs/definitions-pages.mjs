@@ -213,7 +213,7 @@ function buildSpecificationIndex(spec) {
     entities.sort((a, b) => a.code.localeCompare(b.code));
     links += `### ${layer}\n\n`;
     if (LAYER_DESCRIPTIONS[layer]) links += `${LAYER_DESCRIPTIONS[layer]}\n\n`;
-    links += '| Entity | Code | Definition | Not |\n';
+    links += '| Entity | Code | Definition | Boundaries |\n';
     links += '| :--- | :--- | :--- | :--- |\n';
     for (const entity of entities) {
       links += `| [\`${entity.name}\`](${DOCS_BASE}/${entity.slug}) | \`${entity.code}\` | ${escapeMdx(entity.description)} | ${escapeMdx(entity.litmus)} |\n`;
@@ -231,9 +231,6 @@ ${links}
 }
 
 function buildVocabularyPage(entity, entityNames) {
-  const statementSpecNote = entity.name === 'Statement'
-    ? `<Callout title="Statements Specification">\n  See [Statements Specification](${FCP_BASE}/statements) for the protocol-level statement structure.\n</Callout>\n\n`
-    : '';
   const allowedReferenceTypes = entity.fideIdRules?.allowedReferenceTypes?.length
     ? entity.fideIdRules.allowedReferenceTypes.map((name) => `[\`${name}\`](${DOCS_BASE}/${toSlug(name)})`).join(' or ')
     : null;
@@ -250,21 +247,36 @@ function buildVocabularyPage(entity, entityNames) {
     ? entity.fideIdRules.referenceTypeRules : null;
 
   const referenceExamplesBlock = referenceExamples.length > 0
-    ? `${referenceExamples.map((group) => `<details>\n<summary>${linkifyRuleText(group.summary, entityNames)}</summary>\n\n${group.examples.map((example) => renderExample(example, entityNames)).join('\n')}\n</details>`).join('\n\n')}\n`
+    ? `${referenceExamples.map((group) => `<details>
+<summary>${linkifyRuleText(group.summary, entityNames)}</summary>
+
+${group.examples.map((example) => renderExample(example, entityNames)).join('\n')}
+</details>`).join('\n\n')}\n`
     : '';
   const referenceRuleDetailsBlock = referenceRuleDetails.length > 0
-    ? `${referenceRuleDetails.map((item) => `<details>\n<summary>${linkifyRuleText(item.rule, entityNames)}</summary>\n\n${item.examples.map((example) => renderExample(example, entityNames)).join('\n')}\n</details>`).join('\n\n')}\n`
+    ? `${referenceRuleDetails.map((item) => `<details>
+<summary>${linkifyRuleText(item.rule, entityNames)}</summary>
+
+${item.examples.map((example) => renderExample(example, entityNames)).join('\n')}
+</details>`).join('\n\n')}\n`
     : '';
   const referenceTypeRuleDetails = Array.isArray(referenceTypeRules?.ruleDetails) ? referenceTypeRules.ruleDetails : [];
   const referenceTypeRuleDetailsBlock = referenceTypeRuleDetails.length > 0
-    ? `${referenceTypeRuleDetails.map((item) => `<details>\n<summary>${linkifyRuleText(item.rule, entityNames)}</summary>\n\n${item.examples.map((example) => renderExample(example, entityNames)).join('\n')}\n</details>`).join('\n\n')}\n`
+    ? `${referenceTypeRuleDetails.map((item) => `<details>
+<summary>${linkifyRuleText(item.rule, entityNames)}</summary>
+
+${item.examples.map((example) => renderExample(example, entityNames)).join('\n')}
+</details>`).join('\n\n')}\n`
     : '';
 
   const entityTypeRulesSection = allowedReferenceTypes || referenceRequirements.length > 0 || referenceRecommendations.length > 0 || referenceRuleDetailsBlock || referenceExamplesBlock
     ? `
 ### As Entity Type
 
-${allowedReferenceTypes ? `- MUST use [Reference Type](${FIDE_ID_BASE}/index#reference-type) ${allowedReferenceTypes}.\n` : ''}${referenceRequirements.map((rule) => `- ${linkifyRuleText(rule, entityNames)}\n`).join('')}${referenceRecommendations.map((rule) => `- ${linkifyRuleText(rule, entityNames)}\n`).join('')}
+${allowedReferenceTypes ? `- MUST use [Reference Type](${FIDE_ID_BASE}/index#reference-type) ${allowedReferenceTypes}.
+` : ''}${referenceRequirements.map((rule) => `- ${linkifyRuleText(rule, entityNames)}
+`).join('')}${referenceRecommendations.map((rule) => `- ${linkifyRuleText(rule, entityNames)}
+`).join('')}
 ${referenceRuleDetailsBlock}
 ${referenceExamplesBlock}`
     : '';
@@ -273,16 +285,25 @@ ${referenceExamplesBlock}`
     ? `
 ### As Reference Type
 
-${Array.isArray(referenceTypeRules.requirements) ? referenceTypeRules.requirements.map((rule) => `- ${linkifyRuleText(rule, entityNames)}\n`).join('') : ''}
+${Array.isArray(referenceTypeRules.requirements) ? referenceTypeRules.requirements.map((rule) => `- ${linkifyRuleText(rule, entityNames)}
+`).join('') : ''}
 ${referenceTypeRuleDetailsBlock}`
     : '';
+
 
   const fideIdRulesSection = entity.fideIdRules || referenceTypeRules
     ? `
 ## Fide ID Rules
+
+These rules define how ${entity.name} can appear inside a [Fide ID](/fide-id).
 ${entityTypeRulesSection}
 ${asReferenceTypeSection}`
     : '';
+
+  const metadataLines = [
+    `- **Hex Code:** \`${entity.code}\``,
+    entity.standards.length > 0 ? `- **Standard Alignment:** ${renderStandardAlignment(entity.standards, entity.standardFit)}` : null,
+  ].filter(Boolean).join('\n');
 
   return `---
 title: ${quote(entity.name)}
@@ -290,15 +311,14 @@ description: ${quote(entity.description)}
 full: true
 ---
 
-## Summary
+## Definition
 
-- **Hex Code:** \`${entity.code}\`
-- **Standard Alignment:** ${renderStandardAlignment(entity.standards, entity.standardFit)}
+${entity.description}
 
-<Callout type="warning" title="Not">
-  ${escapeMdx(entity.litmus)}
-</Callout>
-${statementSpecNote}${fideIdRulesSection}
+- **Boundaries:** ${escapeMdx(entity.litmus)}
+${metadataLines}
+
+${fideIdRulesSection}
 ${buildExamplesSection(entity)}
 `;
 }
