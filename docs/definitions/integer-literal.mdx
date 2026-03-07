@@ -19,23 +19,23 @@ These rules define how IntegerLiteral can appear inside a [Fide ID](/fide-id).
 
 ### As Entity Type
 
-- MUST use [Reference Type](/fide-id/specification/index#reference-type) [`IntegerLiteral`](/vocabulary/definitions/integer-literal) or [`NetworkResource`](/vocabulary/definitions/network-resource).
+- MUST use [Reference Type](/fide-id/specification/syntax#reference-type) [`IntegerLiteral`](/vocabulary/definitions/integer-literal) or [`NetworkResource`](/vocabulary/definitions/network-resource).
 
 
 
 
 ### As Reference Type
 
-- [Reference](/fide-id/specification/index#reference) MUST use a base-10 integer string ([XML Schema 1.1 Part 2: Datatypes](https://www.w3.org/TR/xmlschema11-2/#integer)).
+- [Reference](/fide-id/specification/syntax#reference-identifier) MUST use a base-10 integer string ([XML Schema 1.1 Part 2: Datatypes](https://www.w3.org/TR/xmlschema11-2/#integer)).
 
 <details>
 <summary>Integer references MUST NOT use decimal points, scientific notation, or thousands separators.</summary>
 
-- Valid [Reference](/fide-id/specification/index#reference): `42`
-- Valid [Reference](/fide-id/specification/index#reference): `-7`
-- Invalid [Reference](/fide-id/specification/index#reference): `4.2`
-- Invalid [Reference](/fide-id/specification/index#reference): `1e3`
-- Invalid [Reference](/fide-id/specification/index#reference): `1,000`
+- Valid [Reference](/fide-id/specification/syntax#reference-identifier): `42`
+- Valid [Reference](/fide-id/specification/syntax#reference-identifier): `-7`
+- Invalid [Reference](/fide-id/specification/syntax#reference-identifier): `4.2`
+- Invalid [Reference](/fide-id/specification/syntax#reference-identifier): `1e3`
+- Invalid [Reference](/fide-id/specification/syntax#reference-identifier): `1,000`
 </details>
 
 

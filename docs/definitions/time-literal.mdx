@@ -19,21 +19,21 @@ These rules define how TimeLiteral can appear inside a [Fide ID](/fide-id).
 
 ### As Entity Type
 
-- MUST use [Reference Type](/fide-id/specification/index#reference-type) [`TimeLiteral`](/vocabulary/definitions/time-literal) or [`NetworkResource`](/vocabulary/definitions/network-resource).
+- MUST use [Reference Type](/fide-id/specification/syntax#reference-type) [`TimeLiteral`](/vocabulary/definitions/time-literal) or [`NetworkResource`](/vocabulary/definitions/network-resource).
 
 
 
 
 ### As Reference Type
 
-- [Reference](/fide-id/specification/index#reference) MUST use UTC time format with a trailing `Z` ([XML Schema 1.1 Part 2: Datatypes](https://www.w3.org/TR/xmlschema11-2/#time)).
+- [Reference](/fide-id/specification/syntax#reference-identifier) MUST use UTC time format with a trailing `Z` ([XML Schema 1.1 Part 2: Datatypes](https://www.w3.org/TR/xmlschema11-2/#time)).
 
 <details>
 <summary>Time references MUST use zero-padded hour, minute, and second values.</summary>
 
-- Valid [Reference](/fide-id/specification/index#reference): `14:30:00Z`
-- Invalid [Reference](/fide-id/specification/index#reference): `14:30:00`
-- Invalid [Reference](/fide-id/specification/index#reference): `2:30 PM`
+- Valid [Reference](/fide-id/specification/syntax#reference-identifier): `14:30:00Z`
+- Invalid [Reference](/fide-id/specification/syntax#reference-identifier): `14:30:00`
+- Invalid [Reference](/fide-id/specification/syntax#reference-identifier): `2:30 PM`
 </details>
 
 

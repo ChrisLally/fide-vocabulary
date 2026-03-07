@@ -19,21 +19,21 @@ These rules define how DateLiteral can appear inside a [Fide ID](/fide-id).
 
 ### As Entity Type
 
-- MUST use [Reference Type](/fide-id/specification/index#reference-type) [`DateLiteral`](/vocabulary/definitions/date-literal) or [`NetworkResource`](/vocabulary/definitions/network-resource).
+- MUST use [Reference Type](/fide-id/specification/syntax#reference-type) [`DateLiteral`](/vocabulary/definitions/date-literal) or [`NetworkResource`](/vocabulary/definitions/network-resource).
 
 
 
 
 ### As Reference Type
 
-- [Reference](/fide-id/specification/index#reference) MUST use `YYYY-MM-DD` format ([XML Schema 1.1 Part 2: Datatypes](https://www.w3.org/TR/xmlschema11-2/#date)).
+- [Reference](/fide-id/specification/syntax#reference-identifier) MUST use `YYYY-MM-DD` format ([XML Schema 1.1 Part 2: Datatypes](https://www.w3.org/TR/xmlschema11-2/#date)).
 
 <details>
 <summary>Date references MUST use zero-padded month and day values.</summary>
 
-- Valid [Reference](/fide-id/specification/index#reference): `2026-03-05`
-- Invalid [Reference](/fide-id/specification/index#reference): `2026-3-5`
-- Invalid [Reference](/fide-id/specification/index#reference): `03/05/2026`
+- Valid [Reference](/fide-id/specification/syntax#reference-identifier): `2026-03-05`
+- Invalid [Reference](/fide-id/specification/syntax#reference-identifier): `2026-3-5`
+- Invalid [Reference](/fide-id/specification/syntax#reference-identifier): `03/05/2026`
 </details>
 
 

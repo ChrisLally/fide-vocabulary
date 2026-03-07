@@ -64,18 +64,18 @@ function escapeMdx(text) {
 
 function linkifyRuleText(text, entityNames) {
   const withBackticksLinked = text.replace(/`([^`]+)`/g, (_match, value) => {
-    if (value === 'Reference') return '[`Reference`](' + `${FIDE_ID_BASE}/index#reference` + ')';
-    if (value === 'Reference Type') return '[`Reference Type`](' + `${FIDE_ID_BASE}/index#reference-type` + ')';
-    if (value === 'Entity Type') return '[`Entity Type`](' + `${FIDE_ID_BASE}/index#entity-type` + ')';
+    if (value === 'Reference') return '[`Reference`](' + `${FIDE_ID_BASE}/syntax#reference-identifier` + ')';
+    if (value === 'Reference Type') return '[`Reference Type`](' + `${FIDE_ID_BASE}/syntax#reference-type` + ')';
+    if (value === 'Entity Type') return '[`Entity Type`](' + `${FIDE_ID_BASE}/syntax#entity-type` + ')';
     if (entityNames.has(value)) return `[
 \`${value}\`](${DOCS_BASE}/${toSlug(value)})`.replace('\n', '');
     return `\`${value}\``;
   });
 
   return withBackticksLinked
-    .replace(/\bReference Type\b/g, `[Reference Type](${FIDE_ID_BASE}/index#reference-type)`)
-    .replace(/\bEntity Type\b/g, `[Entity Type](${FIDE_ID_BASE}/index#entity-type)`)
-    .replace(/\bReference\b/g, `[Reference](${FIDE_ID_BASE}/index#reference)`);
+    .replace(/\bReference Type\b/g, `[Reference Type](${FIDE_ID_BASE}/syntax#reference-type)`)
+    .replace(/\bEntity Type\b/g, `[Entity Type](${FIDE_ID_BASE}/syntax#entity-type)`)
+    .replace(/\bReference\b/g, `[Reference](${FIDE_ID_BASE}/syntax#reference-identifier)`);
 }
 
 function renderExample(example, entityNames) {
@@ -273,7 +273,7 @@ ${item.examples.map((example) => renderExample(example, entityNames)).join('\n')
     ? `
 ### As Entity Type
 
-${allowedReferenceTypes ? `- MUST use [Reference Type](${FIDE_ID_BASE}/index#reference-type) ${allowedReferenceTypes}.
+${allowedReferenceTypes ? `- MUST use [Reference Type](${FIDE_ID_BASE}/syntax#reference-type) ${allowedReferenceTypes}.
 ` : ''}${referenceRequirements.map((rule) => `- ${linkifyRuleText(rule, entityNames)}
 `).join('')}${referenceRecommendations.map((rule) => `- ${linkifyRuleText(rule, entityNames)}
 `).join('')}

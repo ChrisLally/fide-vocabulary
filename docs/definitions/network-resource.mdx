@@ -19,60 +19,60 @@ These rules define how NetworkResource can appear inside a [Fide ID](/fide-id).
 
 ### As Entity Type
 
-- MUST use [Reference Type](/fide-id/specification/index#reference-type) [`NetworkResource`](/vocabulary/definitions/network-resource).
+- MUST use [Reference Type](/fide-id/specification/syntax#reference-type) [`NetworkResource`](/vocabulary/definitions/network-resource).
 
 
 
 
 ### As Reference Type
 
-- [Reference](/fide-id/specification/index#reference) MUST use an absolute URI in compliance with [RFC 3986](https://www.rfc-editor.org/rfc/rfc3986).
+- [Reference](/fide-id/specification/syntax#reference-identifier) MUST use an absolute URI in compliance with [RFC 3986](https://www.rfc-editor.org/rfc/rfc3986).
 
 <details>
 <summary>`http(s)` references MUST use a non-local hostname and normalized form before hashing, including lowercase protocol and hostname and no default ports, in compliance with the [URL Standard](https://url.spec.whatwg.org/).</summary>
 
-- Valid [Reference](/fide-id/specification/index#reference): `https://example.com/alice`
-- Invalid [Reference](/fide-id/specification/index#reference): `http://localhost/resource`
-- Invalid [Reference](/fide-id/specification/index#reference): `https:///alice`
-- Invalid [Reference](/fide-id/specification/index#reference): `example.com/alice`
-- Invalid [Reference](/fide-id/specification/index#reference): `HTTPS://Example.com:443/alice`
+- Valid [Reference](/fide-id/specification/syntax#reference-identifier): `https://example.com/alice`
+- Invalid [Reference](/fide-id/specification/syntax#reference-identifier): `http://localhost/resource`
+- Invalid [Reference](/fide-id/specification/syntax#reference-identifier): `https:///alice`
+- Invalid [Reference](/fide-id/specification/syntax#reference-identifier): `example.com/alice`
+- Invalid [Reference](/fide-id/specification/syntax#reference-identifier): `HTTPS://Example.com:443/alice`
 </details>
 
 <details>
 <summary>`did` references MUST use `did:<method>:<method-specific-id>` in compliance with [W3C DID](https://www.w3.org/TR/did-core/).</summary>
 
-- Valid [Reference](/fide-id/specification/index#reference): `did:key:z6Mkw...`
-- Valid [Reference](/fide-id/specification/index#reference): `did:fide:0x...`
-- Invalid [Reference](/fide-id/specification/index#reference): `fide:0x...`
+- Valid [Reference](/fide-id/specification/syntax#reference-identifier): `did:key:z6Mkw...`
+- Valid [Reference](/fide-id/specification/syntax#reference-identifier): `did:fide:0x...`
+- Invalid [Reference](/fide-id/specification/syntax#reference-identifier): `fide:0x...`
 </details>
 
 <details>
 <summary>`urn` references MUST use `urn:<nid>:<nss>` in compliance with [RFC 8141](https://www.rfc-editor.org/rfc/rfc8141).</summary>
 
-- Valid [Reference](/fide-id/specification/index#reference): `urn:isbn:9780140328721`
-- Invalid [Reference](/fide-id/specification/index#reference): `isbn:9780140328721`
+- Valid [Reference](/fide-id/specification/syntax#reference-identifier): `urn:isbn:9780140328721`
+- Invalid [Reference](/fide-id/specification/syntax#reference-identifier): `isbn:9780140328721`
 </details>
 
 <details>
 <summary>`acct` references MUST use `acct:user@host` in compliance with [RFC 7565](https://www.rfc-editor.org/rfc/rfc7565).</summary>
 
-- Valid [Reference](/fide-id/specification/index#reference): `acct:alice@example.com`
-- Invalid [Reference](/fide-id/specification/index#reference): `alice@example.com`
+- Valid [Reference](/fide-id/specification/syntax#reference-identifier): `acct:alice@example.com`
+- Invalid [Reference](/fide-id/specification/syntax#reference-identifier): `alice@example.com`
 </details>
 
 <details>
 <summary>`mailto` references MUST use `mailto:user@example.com` in compliance with [RFC 6068](https://www.rfc-editor.org/rfc/rfc6068).</summary>
 
-- Valid [Reference](/fide-id/specification/index#reference): `mailto:alice@example.com`
-- Invalid [Reference](/fide-id/specification/index#reference): `alice@example.com`
+- Valid [Reference](/fide-id/specification/syntax#reference-identifier): `mailto:alice@example.com`
+- Invalid [Reference](/fide-id/specification/syntax#reference-identifier): `alice@example.com`
 </details>
 
 <details>
 <summary>References SHOULD use identifiers that are not expected to change over time when such identifiers are available.</summary>
 
-- Preferred [Reference](/fide-id/specification/index#reference): `https://orcid.org/0000-0002-1825-0097`
-- Less Stable [Reference](/fide-id/specification/index#reference): `https://example.com/@alice`
-- Less Stable [Reference](/fide-id/specification/index#reference): `https://example.com/alice`
+- Preferred [Reference](/fide-id/specification/syntax#reference-identifier): `https://orcid.org/0000-0002-1825-0097`
+- Less Stable [Reference](/fide-id/specification/syntax#reference-identifier): `https://example.com/@alice`
+- Less Stable [Reference](/fide-id/specification/syntax#reference-identifier): `https://example.com/alice`
 </details>
 
 

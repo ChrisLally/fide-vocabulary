@@ -19,21 +19,21 @@ These rules define how JSONLiteral can appear inside a [Fide ID](/fide-id).
 
 ### As Entity Type
 
-- MUST use [Reference Type](/fide-id/specification/index#reference-type) [`JSONLiteral`](/vocabulary/definitions/json-literal) or [`NetworkResource`](/vocabulary/definitions/network-resource).
+- MUST use [Reference Type](/fide-id/specification/syntax#reference-type) [`JSONLiteral`](/vocabulary/definitions/json-literal) or [`NetworkResource`](/vocabulary/definitions/network-resource).
 
 
 
 
 ### As Reference Type
 
-- [Reference](/fide-id/specification/index#reference) MUST use canonical JSON string form ([RFC 8785](https://www.rfc-editor.org/rfc/rfc8785)).
+- [Reference](/fide-id/specification/syntax#reference-identifier) MUST use canonical JSON string form ([RFC 8785](https://www.rfc-editor.org/rfc/rfc8785)).
 
 <details>
 <summary>JSON references MUST be serialized in a stable canonical form before hashing.</summary>
 
-- Valid [Reference](/fide-id/specification/index#reference): `{"a":1,"b":2}`
-- Invalid [Reference](/fide-id/specification/index#reference): `{"b":2,"a":1}`
-- Invalid [Reference](/fide-id/specification/index#reference): `{ "a": 1, "b": 2 }`
+- Valid [Reference](/fide-id/specification/syntax#reference-identifier): `{"a":1,"b":2}`
+- Invalid [Reference](/fide-id/specification/syntax#reference-identifier): `{"b":2,"a":1}`
+- Invalid [Reference](/fide-id/specification/syntax#reference-identifier): `{ "a": 1, "b": 2 }`
 </details>
 
 

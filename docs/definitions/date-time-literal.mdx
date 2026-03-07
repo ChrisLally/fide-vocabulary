@@ -19,21 +19,21 @@ These rules define how DateTimeLiteral can appear inside a [Fide ID](/fide-id).
 
 ### As Entity Type
 
-- MUST use [Reference Type](/fide-id/specification/index#reference-type) [`DateTimeLiteral`](/vocabulary/definitions/date-time-literal) or [`NetworkResource`](/vocabulary/definitions/network-resource).
+- MUST use [Reference Type](/fide-id/specification/syntax#reference-type) [`DateTimeLiteral`](/vocabulary/definitions/date-time-literal) or [`NetworkResource`](/vocabulary/definitions/network-resource).
 
 
 
 
 ### As Reference Type
 
-- [Reference](/fide-id/specification/index#reference) MUST use UTC datetime format with a trailing `Z` ([XML Schema 1.1 Part 2: Datatypes](https://www.w3.org/TR/xmlschema11-2/#dateTime)).
+- [Reference](/fide-id/specification/syntax#reference-identifier) MUST use UTC datetime format with a trailing `Z` ([XML Schema 1.1 Part 2: Datatypes](https://www.w3.org/TR/xmlschema11-2/#dateTime)).
 
 <details>
 <summary>Datetime references MUST use `YYYY-MM-DDTHH:MM:SSZ` format.</summary>
 
-- Valid [Reference](/fide-id/specification/index#reference): `2026-03-05T14:30:00Z`
-- Invalid [Reference](/fide-id/specification/index#reference): `2026-03-05 14:30:00`
-- Invalid [Reference](/fide-id/specification/index#reference): `2026-03-05T14:30:00-05:00`
+- Valid [Reference](/fide-id/specification/syntax#reference-identifier): `2026-03-05T14:30:00Z`
+- Invalid [Reference](/fide-id/specification/syntax#reference-identifier): `2026-03-05 14:30:00`
+- Invalid [Reference](/fide-id/specification/syntax#reference-identifier): `2026-03-05T14:30:00-05:00`
 </details>
 
 

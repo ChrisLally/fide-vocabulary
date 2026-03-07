@@ -19,22 +19,22 @@ These rules define how DurationLiteral can appear inside a [Fide ID](/fide-id).
 
 ### As Entity Type
 
-- MUST use [Reference Type](/fide-id/specification/index#reference-type) [`DurationLiteral`](/vocabulary/definitions/duration-literal) or [`NetworkResource`](/vocabulary/definitions/network-resource).
+- MUST use [Reference Type](/fide-id/specification/syntax#reference-type) [`DurationLiteral`](/vocabulary/definitions/duration-literal) or [`NetworkResource`](/vocabulary/definitions/network-resource).
 
 
 
 
 ### As Reference Type
 
-- [Reference](/fide-id/specification/index#reference) MUST use ISO 8601 duration format ([XML Schema 1.1 Part 2: Datatypes](https://www.w3.org/TR/xmlschema11-2/#duration)).
+- [Reference](/fide-id/specification/syntax#reference-identifier) MUST use ISO 8601 duration format ([XML Schema 1.1 Part 2: Datatypes](https://www.w3.org/TR/xmlschema11-2/#duration)).
 
 <details>
 <summary>Duration references MUST begin with `P` and use valid duration components.</summary>
 
-- Valid [Reference](/fide-id/specification/index#reference): `P3D`
-- Valid [Reference](/fide-id/specification/index#reference): `PT1H30M`
-- Invalid [Reference](/fide-id/specification/index#reference): `3 days`
-- Invalid [Reference](/fide-id/specification/index#reference): `1h30m`
+- Valid [Reference](/fide-id/specification/syntax#reference-identifier): `P3D`
+- Valid [Reference](/fide-id/specification/syntax#reference-identifier): `PT1H30M`
+- Invalid [Reference](/fide-id/specification/syntax#reference-identifier): `3 days`
+- Invalid [Reference](/fide-id/specification/syntax#reference-identifier): `1h30m`
 </details>
 
 

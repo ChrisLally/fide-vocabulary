@@ -19,7 +19,7 @@ These rules define how URILiteral can appear inside a [Fide ID](/fide-id).
 
 ### As Entity Type
 
-- MUST use [Reference Type](/fide-id/specification/index#reference-type) [`URILiteral`](/vocabulary/definitions/uri-literal) or [`NetworkResource`](/vocabulary/definitions/network-resource).
+- MUST use [Reference Type](/fide-id/specification/syntax#reference-type) [`URILiteral`](/vocabulary/definitions/uri-literal) or [`NetworkResource`](/vocabulary/definitions/network-resource).
 
 
 
@@ -28,19 +28,19 @@ These rules define how URILiteral can appear inside a [Fide ID](/fide-id).
 
 
 <details>
-<summary>[[Reference](/fide-id/specification/index#reference) Type](/fide-id/specification/index#reference-type) [`URILiteral`](/vocabulary/definitions/uri-literal) is only valid when the [Entity Type](/fide-id/specification/index#entity-type) is also [`URILiteral`](/vocabulary/definitions/uri-literal).</summary>
+<summary>[[Reference](/fide-id/specification/syntax#reference-identifier) Type](/fide-id/specification/syntax#reference-type) [`URILiteral`](/vocabulary/definitions/uri-literal) is only valid when the [Entity Type](/fide-id/specification/syntax#entity-type) is also [`URILiteral`](/vocabulary/definitions/uri-literal).</summary>
 
-- Valid [Entity Type](/fide-id/specification/index#entity-type): [`URILiteral`](/vocabulary/definitions/uri-literal)
-- Invalid [Entity Type](/fide-id/specification/index#entity-type): [`Person`](/vocabulary/definitions/person)
-- Invalid [Entity Type](/fide-id/specification/index#entity-type): [`TextLiteral`](/vocabulary/definitions/text-literal)
+- Valid [Entity Type](/fide-id/specification/syntax#entity-type): [`URILiteral`](/vocabulary/definitions/uri-literal)
+- Invalid [Entity Type](/fide-id/specification/syntax#entity-type): [`Person`](/vocabulary/definitions/person)
+- Invalid [Entity Type](/fide-id/specification/syntax#entity-type): [`TextLiteral`](/vocabulary/definitions/text-literal)
 </details>
 
 <details>
-<summary>[Reference](/fide-id/specification/index#reference) MUST be a valid URI string in compliance with [RFC 3986](https://www.rfc-editor.org/rfc/rfc3986).</summary>
+<summary>[Reference](/fide-id/specification/syntax#reference-identifier) MUST be a valid URI string in compliance with [RFC 3986](https://www.rfc-editor.org/rfc/rfc3986).</summary>
 
-- Valid [Reference](/fide-id/specification/index#reference): `mailto:alice@example.com`
-- Valid [Reference](/fide-id/specification/index#reference): `urn:isbn:9780140328721`
-- Invalid [Reference](/fide-id/specification/index#reference): `example.com/alice`
+- Valid [Reference](/fide-id/specification/syntax#reference-identifier): `mailto:alice@example.com`
+- Valid [Reference](/fide-id/specification/syntax#reference-identifier): `urn:isbn:9780140328721`
+- Invalid [Reference](/fide-id/specification/syntax#reference-identifier): `example.com/alice`
 </details>
 
 
