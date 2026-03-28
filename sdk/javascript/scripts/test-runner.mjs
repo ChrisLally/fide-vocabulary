@@ -22,8 +22,8 @@ function fail(label, message) {
   console.error(`[FAIL] ${label}: ${message}`);
 }
 
-if (FIDE_VOCABULARY.specVersion !== "1") {
-  fail("spec-version", `expected 1, got ${FIDE_VOCABULARY.specVersion}`);
+if (FIDE_VOCABULARY.specVersion !== "0") {
+  fail("spec-version", `expected 0, got ${FIDE_VOCABULARY.specVersion}`);
 } else {
   pass("spec-version");
 }

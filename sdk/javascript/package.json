@@ -44,7 +44,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "check-types": "tsc --noEmit",
-    "generate:sdk": "node ../../scripts/generate-sdk/spec-module.mjs",
+    "generate:sdk:spec": "node ../../scripts/generate-sdk/spec-module.mjs",
     "generate:docs": "node ../../scripts/generate-docs/sdk-reference.mjs",
     "test": "pnpm run build && node scripts/test-runner.mjs",
     "test:verbose": "pnpm run build && node scripts/test-runner.mjs --verbose"
