@@ -1,10 +1,10 @@
 /**
- * Generated from `packages/fide-vocabulary/spec/v1/vocabulary.json`.
+ * Generated from `packages/fide-vocabulary/spec/v0/vocabulary.json`.
  * Do not edit directly; regenerate from the vocabulary source of truth.
  */
 export const FIDE_VOCABULARY = {
-  namespaceUrl: "https://fide.work/spec/v1/",
-  specVersion: "1",
+  namespaceUrl: "https://fide.work/spec/v0/",
+  specVersion: "0",
   specDate: "2026-02-18",
   entityTypes: {
     Statement: {

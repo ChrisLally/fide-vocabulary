@@ -6,14 +6,15 @@
   "author": "Fide Holdings, Inc. (https://github.com/fide)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ChrisLally/fide-vocabulary.git"
+    "url": "https://github.com/fide/vocabulary.git"
   },
-  "homepage": "https://fide.work/fide-vocabulary",
+  "homepage": "https://fide.work/docs/vocabulary",
   "keywords": [
     "fide",
-    "fide-vocabulary",
-    "entity-vocabulary",
-    "vocabulary"
+    "fide-context-protocol",
+    "fide-id",
+    "vocabulary",
+    "entity-vocabulary"
   ],
   "sideEffects": false,
   "engines": {

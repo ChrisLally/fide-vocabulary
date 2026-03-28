@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 const PACKAGE_ROOT = resolve(SCRIPT_DIR, '..', '..');
-const VOCABULARY_SPEC_PATH = resolve(PACKAGE_ROOT, 'spec/v1/vocabulary.json');
+const VOCABULARY_SPEC_PATH = resolve(PACKAGE_ROOT, 'spec/v0/vocabulary.json');
 const DEFINITIONS_DIR = resolve(PACKAGE_ROOT, 'docs/definitions');
 
 const DOCS_BASE = '/vocabulary/definitions';

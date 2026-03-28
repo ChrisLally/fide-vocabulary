@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 const PACKAGE_ROOT = resolve(SCRIPT_DIR, "..", "..");
-const VOCABULARY_SPEC_PATH = resolve(PACKAGE_ROOT, "spec/v1/vocabulary.json");
+const VOCABULARY_SPEC_PATH = resolve(PACKAGE_ROOT, "spec/v0/vocabulary.json");
 const SDK_SPEC_OUTPUT = resolve(PACKAGE_ROOT, "sdk/javascript/src/spec/index.ts");
 
 function ensureString(value, path) {
@@ -59,7 +59,7 @@ function buildSpecModule(spec) {
     .join("\n");
 
   return `/**
- * Generated from \`packages/fide-vocabulary/spec/v1/vocabulary.json\`.
+ * Generated from \`packages/fide-vocabulary/spec/v0/vocabulary.json\`.
  * Do not edit directly; regenerate from the vocabulary source of truth.
  */
 export const FIDE_VOCABULARY = {

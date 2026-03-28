@@ -1,6 +1,6 @@
 {
-  "namespaceUrl": "https://fide.work/spec/v1/",
-  "specVersion": "1",
+  "namespaceUrl": "https://fide.work/spec/v0/",
+  "specVersion": "0",
   "specDate": "2026-02-18",
   "entityTypes": {
     "Statement": {
